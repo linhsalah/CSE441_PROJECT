@@ -1,14 +1,22 @@
 package com.example.soundme.activities;
 
+import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.soundme.R;
+import com.example.soundme.constant.Constant;
 import com.example.soundme.fragments.FragmentLibrary;
 import com.example.soundme.fragments.FragmentMiniPlayer;
 import com.example.soundme.fragments.FragmentSearch;
@@ -36,28 +44,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        checkNotificationPermission();
         addControl();
-        addEvent();
-    }
 
-    private void addControl() {
-        viewPager = findViewById(R.id.viewpager);
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        addMiniPlayer();
-    }
-
-    private void addMiniPlayer() {
-        FragmentMiniPlayer fragmentMiniPlayer = new FragmentMiniPlayer();
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.miniPlayer_frame, fragmentMiniPlayer);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
-    private void addEvent() {
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        //        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 //            @Override
 //            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 //                switch (item.getItemId()) {
@@ -100,6 +90,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupViewPager(viewPager);
+
+
+    }
+
+    private void addControl() {
+        viewPager = findViewById(R.id.viewpager);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        addMiniPlayer();
+    }
+
+    private void addMiniPlayer() {
+        FragmentMiniPlayer fragmentMiniPlayer = new FragmentMiniPlayer();
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.miniPlayer_frame, fragmentMiniPlayer);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -112,5 +120,14 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(fragmentSearch);
         adapter.addFragment(fragmentLibrary);
         viewPager.setAdapter(adapter);
+    }
+    private void checkNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+            }
+        }
     }
 }
