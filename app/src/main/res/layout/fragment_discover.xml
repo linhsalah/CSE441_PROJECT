@@ -7,47 +7,20 @@
     tools:context=".fragments.FragmentDiscover"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/top_frame"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimenTopBackgroundHeight"
-        android:background="@color/colorDark2" >
-        <ImageView
-            android:id="@+id/imgUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:src="@drawable/ic_user"
-
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="4dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="9dp"/>
-
-        <ImageView
-            android:id="@+id/imgSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:src="@drawable/ic_settings"
-
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="4dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="9dp"/>
+        android:background="@color/colorDark2"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo_and_text" />
 
-            android:src="@drawable/ic_logo_and_text"
-            android:layout_toLeftOf="@id/imgSettings"
-            android:layout_toRightOf="@id/imgUser"
-
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="15dp"/>
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -99,6 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/menu_category"
+                        style="@style/ListHeader"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_normal"
                         android:textStyle="bold" />
@@ -149,6 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/menu_artist"
+                        style="@style/ListHeader"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_normal"
                         android:textStyle="bold" />
@@ -199,6 +174,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/menu_popular_songs"
+                        style="@style/ListHeader"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_normal"
                         android:textStyle="bold" />
@@ -236,65 +212,7 @@
                     android:focusable="false"
                     android:nestedScrollingEnabled="false" />
 
-                <LinearLayout
-                    android:id="@+id/layout_favorite"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/define_dimen_10"
-                        android:layout_marginEnd="@dimen/define_dimen_10"
-                        android:layout_marginBottom="@dimen/define_dimen_5"
-                        android:layout_marginTop="@dimen/define_dimen_12">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:text="@string/menu_favorite_songs"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/text_size_normal"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:id="@+id/layout_view_all_favorite_songs"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:padding="@dimen/define_dimen_5"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentEnd="true"
-                            android:orientation="vertical"
-                            tools:ignore="RelativeOverlap">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/view_all"
-                                android:textColor="@color/white"/>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/white"/>
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rcv_favorite_songs"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/define_dimen_10"
-                        android:layout_marginBottom="@dimen/define_dimen_10"
-                        android:focusable="false"
-                        android:nestedScrollingEnabled="false" />
-                </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
