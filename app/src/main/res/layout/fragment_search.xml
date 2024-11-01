@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.FragmentSearch"
+    tools:context=".Fragments.FragmentSearch"
     android:background="@color/colorDark1">
 
     <ScrollView
@@ -55,7 +55,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:text="@string/artist_songs_or_album"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -67,61 +66,61 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="@string/random_artist"
+                android:text="@string/random_artists"
                 style="@style/ListHeader"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="40dp"/>
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_popular_albums"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+<!--            <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--                android:id="@+id/shimmer_popular_albums"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
 
-                android:layout_marginTop="@dimen/dimenMarginUnderListHeader"
-                shimmer_duration="@integer/integerShimmerDuration"
-                android:layout_marginLeft="20dp">
+<!--                android:layout_marginTop="@dimen/dimenMarginUnderListHeader"-->
+<!--                shimmer_duration="@integer/integerShimmerDuration"-->
+<!--                android:layout_marginLeft="20dp">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <include layout="@layout/item_shimmer_album"/>
-                    <include layout="@layout/item_shimmer_album"/>
-                    <include layout="@layout/item_shimmer_album"/>
-                    <include layout="@layout/item_shimmer_album"/>
-                </LinearLayout>
-            </com.facebook.shimmer.ShimmerFrameLayout>
+<!--                    <include layout="@layout/item_shimmer_album"/>-->
+<!--                    <include layout="@layout/item_shimmer_album"/>-->
+<!--                    <include layout="@layout/item_shimmer_album"/>-->
+<!--                    <include layout="@layout/item_shimmer_album"/>-->
+<!--                </LinearLayout>-->
+<!--            </com.facebook.shimmer.ShimmerFrameLayout>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
 
-                android:text="@string/random_songs"
-                style="@style/ListHeader"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"/>
+<!--                android:text="@string/random_songs"-->
+<!--                style="@style/ListHeader"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"/>-->
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_random_songs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+<!--            <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--                android:id="@+id/shimmer_random_songs"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
 
-                android:layout_marginTop="@dimen/dimenMarginUnderListHeader"
-                shimmer_duration="@integer/integerShimmerDuration"
-                android:layout_marginStart="20dp">
+<!--                android:layout_marginTop="@dimen/dimenMarginUnderListHeader"-->
+<!--                shimmer_duration="@integer/integerShimmerDuration"-->
+<!--                android:layout_marginStart="20dp">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
 
-                    <include layout="@layout/item_shimmer_list"/>
-                    <include layout="@layout/item_shimmer_list"/>
-                    <include layout="@layout/item_shimmer_list"/>
-                    <include layout="@layout/item_shimmer_list"/>
-                </LinearLayout>
-            </com.facebook.shimmer.ShimmerFrameLayout>
+<!--                    <include layout="@layout/item_shimmer_list"/>-->
+<!--                    <include layout="@layout/item_shimmer_list"/>-->
+<!--                    <include layout="@layout/item_shimmer_list"/>-->
+<!--                    <include layout="@layout/item_shimmer_list"/>-->
+<!--                </LinearLayout>-->
+<!--            </com.facebook.shimmer.ShimmerFrameLayout>-->
         </LinearLayout>
     </ScrollView>
 

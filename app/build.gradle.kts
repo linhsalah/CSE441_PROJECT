@@ -16,6 +16,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -41,7 +42,11 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.media3.extractor)
+    implementation(libs.firebase.database)
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("me.relex:circleindicator:2.1.6")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }

@@ -1,4 +1,4 @@
-package com.example.soundme.service;
+package com.example.soundme.Service;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;

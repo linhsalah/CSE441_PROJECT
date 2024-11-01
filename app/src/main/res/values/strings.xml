@@ -1,9 +1,24 @@
 <resources>
-    <string name="app_name">Music Pro Java</string>
+    <string name="app_name">SoundMe</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_category">Category</string>
     <string name="menu_artist">Artist</string>
+    <string name="discover_menu">Discover</string>
+    <string name="search_menu">Search</string>
+    <string name="library_menu">Library</string>
+
+    <!--SearchFragment-->
+    <string name="artist_songs_or_album">Artist, songs or playlist</string>
+    <string name="random_artists">RANDOM ARTISTS</string>
+    <string name="random_songs">RANDOM SONGS</string>
+    <string name="search">Search</string>
+
+    <!--LibraryActivity-->
+    <string name="library_header">LIBRARY</string>
+    <string name="liked_songs">Liked Songs</string>
+    <string name="liked_songs_uppercase">LIKED SONGS</string>
+    <string name="create_new_playlist">Create new playlist</string>
 
     <string name="menu_all_songs">All Songs</string>
     <string name="menu_popular_songs">Popular Songs</string>

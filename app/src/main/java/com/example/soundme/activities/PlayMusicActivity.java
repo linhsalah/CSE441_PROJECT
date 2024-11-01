@@ -1,24 +1,16 @@
-package com.example.soundme.Activity;
+package com.example.soundme.activities;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.soundme.R;
 import com.example.soundme.databinding.ActivityPlayMusicBinding;
-import com.example.soundme.models.Song;
 
 
 public class PlayMusicActivity extends AppCompatActivity {
 
-    private static final int REQUEST_PERMISSION_CODE = 10;
-    private Song mSong;
     private ActivityPlayMusicBinding mActivityPlayMusicBinding;
 
     @Override
@@ -39,13 +31,13 @@ public class PlayMusicActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        MusicViewPagerAdapter musicViewPagerAdapter = new MusicViewPagerAdapter(this);
-        mActivityPlayMusicBinding.viewpager2.setAdapter(musicViewPagerAdapter);
+//        MusicViewPagerAdapter musicViewPagerAdapter = new MusicViewPagerAdapter(this);
+//        mActivityPlayMusicBinding.viewpager2.setAdapter(musicViewPagerAdapter);
         mActivityPlayMusicBinding.indicator3.setViewPager(mActivityPlayMusicBinding.viewpager2);
         mActivityPlayMusicBinding.viewpager2.setCurrentItem(1);
     }
 
-    public void downloadSong(Song song) {
+    /*public void downloadSong(Song song) {
         mSong = song;
         checkPermission();
     }
@@ -75,5 +67,5 @@ public class PlayMusicActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         }
-    }
+    }*/
 }

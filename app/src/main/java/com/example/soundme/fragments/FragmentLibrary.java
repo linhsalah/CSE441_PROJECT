@@ -1,4 +1,4 @@
-package com.example.soundme.fragments;
+package com.example.soundme.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.soundme.R;
-import com.example.soundme.activities.PlaylistActivity;
+//import com.example.soundme.activities.PlaylistActivity;
 
 public class FragmentLibrary extends Fragment {
     private ConstraintLayout liked_songs_frame;
@@ -29,7 +29,7 @@ public class FragmentLibrary extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         addControl(view);
-        addEvent();
+//        addEvent();
     }
 
     private void addControl(View view) {

@@ -1,4 +1,4 @@
-package com.example.soundme.fragments;
+package com.example.soundme.Fragments;
 
 import android.os.Bundle;
 
@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.soundme.MyApplication;
 import com.example.soundme.R;
-import com.example.soundme.activities.FullPlayerActivity;
+import com.example.soundme.activities.PlayMusicActivity;
 import com.example.soundme.adapters.ArtistHorizontalAdapter;
 import com.example.soundme.adapters.BannerSongAdapter;
 import com.example.soundme.adapters.CategoryAdapter;
@@ -27,7 +27,7 @@ import com.example.soundme.listener.IOnClickSongItemListener;
 import com.example.soundme.models.Artist;
 import com.example.soundme.models.Category;
 import com.example.soundme.models.Song;
-import com.example.soundme.service.MusicService;
+import com.example.soundme.Service.MusicService;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -359,6 +359,6 @@ public class FragmentDiscover extends Fragment {
         MusicService.mListSongPlaying.add(song);
         MusicService.isPlaying = false;
         GlobalFuntion.startMusicService(getActivity(), Constant.PLAY, 0);
-        GlobalFuntion.startActivity(getActivity(), FullPlayerActivity.class);
+        GlobalFuntion.startActivity(getActivity(), PlayMusicActivity.class);
     }
 }

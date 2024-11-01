@@ -4,6 +4,15 @@
             <item name="android:windowTranslucentStatus">true</item>
             <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         </style>
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_bottom_sheet_dialog_fragment_dark_background</item>
+    </style>
 
         <style name="ListHeader">
             <item name="android:textSize">18sp</item>
@@ -107,6 +116,23 @@
             <item name="android:maxLines">1</item>
             <item name="android:ellipsize">end</item>
         </style>
+    <declare-styleable name="AspectRatioView">
+        <attr name="aspectRatioEnabled" format="boolean" />
+        <attr name="dominantMeasurement" format="enum">
+            <enum name="Width" value="0" />
+            <enum name="Height" value="1" />
+        </attr>
+        <attr name="aspectRatio" format="float" />
+
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="roundedCorners">
+            <flag name="topLeft" value="1" />
+            <flag name="topRight" value="2" />
+            <flag name="bottomRight" value="4" />
+            <flag name="bottomLeft" value="8" />
+            <flag name="all" value="15" />
+        </attr>
+    </declare-styleable>
 
        <!-- <style name="RoundCornerDialogFragment" parent="Theme.AppCompat.Light.Dialog.Alert">
             <item name="android:windowBackground">@drawable/round_dark_dialog_background</item>

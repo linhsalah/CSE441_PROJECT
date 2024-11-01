@@ -16,30 +16,30 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.example.soundme.service.MusicReceiver;
-import com.example.soundme.service.MusicService;
+import com.example.soundme.Service.MusicReceiver;
+import com.example.soundme.Service.MusicService;
 
-//import androidx.core.app.ActivityCompat;
-//
-//import com.google.android.material.bottomsheet.BottomSheetBehavior;
-//import com.google.android.material.bottomsheet.BottomSheetDialog;
-//import com.example.soundme.MyApplication;
+import androidx.core.app.ActivityCompat;
+
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.example.soundme.MyApplication;
 //import com.example.soundme.R;
-//import com.example.soundme.activities.MainActivity;
+import com.example.soundme.activities.MainActivity;
 //import com.example.soundme.activities.PlaysoundmeActivity;
 //import com.example.soundme.databinding.LayoutBottomSheetOptionBinding;
-//import com.example.soundme.models.Song;
+import com.example.soundme.models.Song;
 //import com.example.soundme.models.UserInfor;
-//import com.example.soundme.prefs.DataStoreManager;
-//import com.example.soundme.service.soundmeReceiver;
-//import com.example.soundme.service.soundmeService;
-//import com.example.soundme.utils.GlideUtils;
-//import com.example.soundme.utils.StringUtil;
+import com.example.soundme.prefs.DataStoreManager;
+import com.example.soundme.Service.MusicService;
+import com.example.soundme.Service.MusicReceiver;
+import com.example.soundme.utils.GlideUtils;
+import com.example.soundme.utils.StringUtil;
 
-//import java.text.Normalizer;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.regex.Pattern;
+import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class GlobalFuntion {
 
@@ -154,17 +154,16 @@ public class GlobalFuntion {
         int pendingFlag = PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT;
         return PendingIntent.getBroadcast(ctx.getApplicationContext(), action, intent, pendingFlag);
     }
-//
-//    public static boolean isFavoriteSong(Song song) {
-//        if (song.getFavorite() == null || song.getFavorite().isEmpty()) return false;
-//        List<UserInfor> listUsersFavorite = new ArrayList<>(song.getFavorite().values());
-//        if (listUsersFavorite.isEmpty()) return false;
-//        for (UserInfor userInfor : listUsersFavorite) {
-//            if (DataStoreManager.getUser().getEmail().equals(userInfor.getEmailUser())) {
-//                return true;
-//            }
-//        }
-//        return false;
+
+//  public static boolean isFavoriteSong(Song song) {
+//      if (song.getFavorite() == null || song.getFavorite().isEmpty()) return false;
+//      List<UserInfor> listUsersFavorite = new ArrayList<>(song.getFavorite().values());
+//      if (listUsersFavorite.isEmpty()) return false;       for (UserInfor userInfor : listUsersFavorite) {
+//           if (DataStoreManager.getUser().getEmail().equals(userInfor.getEmailUser())) {
+//               return true;
+//          }
+//       }
+//       return false;
 //    }
 //
 //    public static UserInfor getUserFavoriteSong(Song song) {
