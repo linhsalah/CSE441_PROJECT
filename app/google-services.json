@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "762143772138",
+    "firebase_url": "https://soundme-6da35-default-rtdb.firebaseio.com",
+    "project_id": "soundme-6da35",
+    "storage_bucket": "soundme-6da35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762143772138:android:15b8b2bf4380866f257693",
+        "android_client_info": {
+          "package_name": "com.albertkhang.tunedaily"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGNtPyalasXhIM3SQ8buVxiqh2CwvCggY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762143772138:android:782f800114203671257693",
+        "android_client_info": {
+          "package_name": "com.example.soundme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "762143772138-ohernng7o1gf99j7cdogdr05mmv59vbd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.soundme",
+            "certificate_hash": "e3f4f4dbd71f2f58ea67009d2c40093c9998d1b1"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGNtPyalasXhIM3SQ8buVxiqh2CwvCggY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
