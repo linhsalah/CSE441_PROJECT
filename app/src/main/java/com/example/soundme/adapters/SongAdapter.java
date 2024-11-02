@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.soundme.databinding.ItemSongBinding;
 import com.example.soundme.listener.IOnClickSongItemListener;
 import com.example.soundme.models.Song;
-
-
+import com.example.soundme.utils.GlideUtils;
 
 import java.util.List;
 
@@ -19,10 +18,9 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
     private final List<Song> mListSongs;
     public final IOnClickSongItemListener iOnClickSongItemListener;
 
-    public SongAdapter(List<Song> mListSongs,
-                       IOnClickSongItemListener iOnClickSongItemListener) {
+    public SongAdapter(List<Song> mListSongs, IOnClickSongItemListener mIOnClickSongItemListener) {
         this.mListSongs = mListSongs;
-        this.iOnClickSongItemListener = iOnClickSongItemListener;
+        this.iOnClickSongItemListener = mIOnClickSongItemListener;
     }
 
     @NonNull
@@ -35,13 +33,13 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
     @Override
     public void onBindViewHolder(@NonNull SongViewHolder holder, int position) {
         Song song = mListSongs.get(position);
-        if (song == null) {
+        if (song == null){
             return;
         }
-//        GlideUtils.loadUrl(song.getImage(), holder.mItemSongBinding.imgSong);
+        GlideUtils.loadUrl(song.getImage(), holder.mItemSongBinding.imgSong);
         holder.mItemSongBinding.tvSongName.setText(song.getTitle());
         holder.mItemSongBinding.tvArtist.setText(song.getArtist());
-        holder.mItemSongBinding.tvCountListen.setText(String.valueOf(song.getCount()));
+//        holder.mItemSongBinding.tvCountListen.setText(String.valueOf(song.getCount()));
 
 //        boolean isFavorite = GlobalFuntion.isFavoriteSong(song);
 //        if (isFavorite) {
@@ -51,7 +49,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
 //        }
 
 //        holder.mItemSongBinding.imgFavorite.setOnClickListener(v -> iOnClickSongItemListener.onClickFavoriteSong(song, !isFavorite));
-//        holder.mItemSongBinding.imgMoreOption.setOnClickListener(v -> iOnClickSongItemListener.onClickMoreOptions(song));
+        holder.mItemSongBinding.imgMoreOption.setOnClickListener(v -> iOnClickSongItemListener.onClickMoreOptions(song));
         holder.mItemSongBinding.layoutSongInfo.setOnClickListener(v -> iOnClickSongItemListener.onClickItemSong(song));
     }
 
