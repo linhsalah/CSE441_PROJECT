@@ -1,4 +1,4 @@
-package com.pro.music.prefs;
+package com.example.soundme.prefs;
 
 import android.content.Context;
 

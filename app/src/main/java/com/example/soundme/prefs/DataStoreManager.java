@@ -1,9 +1,10 @@
-package com.pro.music.prefs;
+package com.example.soundme.prefs;
 
 import android.content.Context;
 
 import androidx.annotation.Nullable;
 
+import com.example.soundme.prefs.MySharedPreferences;
 import com.google.gson.Gson;
 import com.pro.music.model.User;
 import com.pro.music.utils.StringUtil;
