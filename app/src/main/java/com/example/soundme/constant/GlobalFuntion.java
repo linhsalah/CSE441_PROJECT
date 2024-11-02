@@ -1,45 +1,40 @@
 package com.example.soundme.constant;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Environment;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.example.soundme.Service.MusicReceiver;
-import com.example.soundme.Service.MusicService;
-
-import androidx.core.app.ActivityCompat;
-
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.example.soundme.MyApplication;
-//import com.example.soundme.R;
-import com.example.soundme.activities.MainActivity;
-//import com.example.soundme.activities.PlaysoundmeActivity;
-//import com.example.soundme.databinding.LayoutBottomSheetOptionBinding;
-import com.example.soundme.models.Song;
-//import com.example.soundme.models.UserInfor;
-import com.example.soundme.prefs.DataStoreManager;
-import com.example.soundme.Service.MusicService;
-import com.example.soundme.Service.MusicReceiver;
-import com.example.soundme.utils.GlideUtils;
-import com.example.soundme.utils.StringUtil;
+import com.example.soundme.service.MusicReceiver;
+import com.example.soundme.service.MusicService;
 
 import java.text.Normalizer;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
+
+//import androidx.core.app.ActivityCompat;
+//
+//import com.google.android.material.bottomsheet.BottomSheetBehavior;
+//import com.google.android.material.bottomsheet.BottomSheetDialog;
+//import com.example.soundme.MyApplication;
+//import com.example.soundme.R;
+//import com.example.soundme.activities.MainActivity;
+//import com.example.soundme.activities.PlaysoundmeActivity;
+//import com.example.soundme.databinding.LayoutBottomSheetOptionBinding;
+//import com.example.soundme.models.Song;
+//import com.example.soundme.models.UserInfor;
+//import com.example.soundme.prefs.DataStoreManager;
+//import com.example.soundme.service.soundmeReceiver;
+//import com.example.soundme.service.soundmeService;
+//import com.example.soundme.utils.GlideUtils;
+//import com.example.soundme.utils.StringUtil;
+
+//import java.text.Normalizer;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.regex.Pattern;
 
 public class GlobalFuntion {
 
@@ -48,16 +43,16 @@ public class GlobalFuntion {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
-//
-//    public static void hideSoftKeyboard(Activity activity) {
-//        try {
-//            InputMethodManager inputMethodManager = (InputMethodManager) activity.
-//                    getSystemService(Activity.INPUT_METHOD_SERVICE);
-//            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-//        } catch (NullPointerException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.
+                    getSystemService(Activity.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
+    }
 //
 //    public static void onClickOpenGmail(Context context) {
 //        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
@@ -134,12 +129,12 @@ public class GlobalFuntion {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-//    public static String getTextSearch(String input) {
-//        String nfdNormalizedString = Normalizer.normalize(input, Normalizer.Form.NFD);
-//        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-//        return pattern.matcher(nfdNormalizedString).replaceAll("");
-//    }
-//
+    public static String getTextSearch(String input) {
+        String nfdNormalizedString = Normalizer.normalize(input, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(nfdNormalizedString).replaceAll("");
+    }
+
     public static void startMusicService(Context ctx, int action, int songPosition) {
         Intent musicService = new Intent(ctx, MusicService.class);
         musicService.putExtra(Constant.MUSIC_ACTION, action);
@@ -154,16 +149,17 @@ public class GlobalFuntion {
         int pendingFlag = PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT;
         return PendingIntent.getBroadcast(ctx.getApplicationContext(), action, intent, pendingFlag);
     }
-
-//  public static boolean isFavoriteSong(Song song) {
-//      if (song.getFavorite() == null || song.getFavorite().isEmpty()) return false;
-//      List<UserInfor> listUsersFavorite = new ArrayList<>(song.getFavorite().values());
-//      if (listUsersFavorite.isEmpty()) return false;       for (UserInfor userInfor : listUsersFavorite) {
-//           if (DataStoreManager.getUser().getEmail().equals(userInfor.getEmailUser())) {
-//               return true;
-//          }
-//       }
-//       return false;
+//
+//    public static boolean isFavoriteSong(Song song) {
+//        if (song.getFavorite() == null || song.getFavorite().isEmpty()) return false;
+//        List<UserInfor> listUsersFavorite = new ArrayList<>(song.getFavorite().values());
+//        if (listUsersFavorite.isEmpty()) return false;
+//        for (UserInfor userInfor : listUsersFavorite) {
+//            if (DataStoreManager.getUser().getEmail().equals(userInfor.getEmailUser())) {
+//                return true;
+//            }
+//        }
+//        return false;
 //    }
 //
 //    public static UserInfor getUserFavoriteSong(Song song) {

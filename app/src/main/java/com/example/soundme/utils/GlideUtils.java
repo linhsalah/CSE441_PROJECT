@@ -2,7 +2,7 @@ package com.example.soundme.utils;
 
 import android.widget.ImageView;
 
-//import com.example.soundme.glide.Glide;
+import com.bumptech.glide.Glide;
 import com.example.soundme.R;
 
 public class GlideUtils {
@@ -12,11 +12,11 @@ public class GlideUtils {
             imageView.setImageResource(R.drawable.img_no_image);
             return;
         }
-//        Glide.with(imageView.getContext())
-//                .load(url)
-//                .error(R.drawable.img_no_image)
-//                .dontAnimate()
-//                .into(imageView);
+        Glide.with(imageView.getContext())
+                .load(url)
+                .error(R.drawable.img_no_image)
+                .dontAnimate()
+                .into(imageView);
     }
 
     public static void loadUrl(String url, ImageView imageView) {
@@ -24,10 +24,10 @@ public class GlideUtils {
             imageView.setImageResource(R.drawable.image_no_available);
             return;
         }
-//        Glide.with(imageView.getContext())
-//                .load(url)
-//                .error(R.drawable.image_no_available)
-//                .dontAnimate()
-//                .into(imageView);
+        Glide.with(imageView.getContext())
+                .load(url)
+                .error(R.drawable.image_no_available)
+                .dontAnimate()
+                .into(imageView);
     }
 }

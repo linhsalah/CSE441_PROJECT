@@ -1,4 +1,4 @@
-package com.example.soundme.Service;
+package com.example.soundme.service;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -19,9 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 import com.example.soundme.MyApplication;
 import com.example.soundme.R;
 import com.example.soundme.activities.MainActivity;
@@ -29,6 +26,9 @@ import com.example.soundme.constant.Constant;
 import com.example.soundme.constant.GlobalFuntion;
 import com.example.soundme.models.Song;
 import com.example.soundme.utils.StringUtil;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;

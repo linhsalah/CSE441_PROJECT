@@ -1,7 +1,6 @@
 package com.example.soundme.models;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 public class Song implements Serializable {
 

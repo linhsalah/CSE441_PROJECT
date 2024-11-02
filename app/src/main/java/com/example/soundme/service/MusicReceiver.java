@@ -1,4 +1,4 @@
-package com.example.soundme.Service;
+package com.example.soundme.service;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,6 +11,6 @@ public class MusicReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         int action = intent.getExtras().getInt(Constant.MUSIC_ACTION);
-        GlobalFuntion.startMusicService(context, action, com.example.soundme.Service.MusicService.mSongPosition);
+        GlobalFuntion.startMusicService(context, action, MusicService.mSongPosition);
     }
 }

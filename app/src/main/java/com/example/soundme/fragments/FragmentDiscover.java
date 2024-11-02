@@ -1,6 +1,10 @@
-package com.example.soundme.Fragments;
+package com.example.soundme.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,14 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.soundme.MyApplication;
 import com.example.soundme.R;
-import com.example.soundme.activities.PlayMusicActivity;
+import com.example.soundme.activities.FullPlayerActivity;
 import com.example.soundme.adapters.ArtistHorizontalAdapter;
 import com.example.soundme.adapters.BannerSongAdapter;
 import com.example.soundme.adapters.CategoryAdapter;
@@ -27,7 +26,7 @@ import com.example.soundme.listener.IOnClickSongItemListener;
 import com.example.soundme.models.Artist;
 import com.example.soundme.models.Category;
 import com.example.soundme.models.Song;
-import com.example.soundme.Service.MusicService;
+import com.example.soundme.service.MusicService;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -163,7 +162,7 @@ public class FragmentDiscover extends Fragment {
                             mListSong.add(0, song);
                         }
                         displayListBannerSongs();
-//                        displayListPopularSongs();
+                        /*displayListPopularSongs();*/
 //                        displayListFavoriteSongs();
                     }
 
@@ -212,10 +211,12 @@ public class FragmentDiscover extends Fragment {
 
             @Override
             public void onClickFavoriteSong(Song song, boolean favorite) {
+
             }
 
             @Override
             public void onClickMoreOptions(Song song) {
+
             }
         });
         mFragmentHomeBinding.viewpager2.setAdapter(bannerSongAdapter);
@@ -248,29 +249,29 @@ public class FragmentDiscover extends Fragment {
         return mListSongBanner;
     }
 
-//    private void displayListPopularSongs() {
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-//        mFragmentHomeBinding.rcvPopularSongs.setLayoutManager(linearLayoutManager);
-//
-//        mSongPopularAdapter = new SongPopularAdapter(getActivity(), getListPopularSongs(),
-//                new IOnClickSongItemListener() {
-//                    @Override
-//                    public void onClickItemSong(Song song) {
-//                        goToSongDetail(song);
-//                    }
-//
-//                    @Override
-//                    public void onClickMoreOptions(Song song) {
-//                        GlobalFuntion.handleClickMoreOptions(getActivity(), song);
-//                    }
-//
-//                    @Override
-//                    public void onClickFavoriteSong(Song song, boolean favorite) {
-//                        GlobalFuntion.onClickFavoriteSong(getActivity(), song, favorite);
-//                    }
-//                });
-//        mFragmentHomeBinding.rcvPopularSongs.setAdapter(mSongPopularAdapter);
-//    }
+    /*private void displayListPopularSongs() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        mFragmentHomeBinding.rcvPopularSongs.setLayoutManager(linearLayoutManager);
+
+        mSongPopularAdapter = new SongPopularAdapter(getActivity(), getListPopularSongs(),
+                new IOnClickSongItemListener() {
+                    @Override
+                    public void onClickItemSong(Song song) {
+                        goToSongDetail(song);
+                    }
+
+                    @Override
+                    public void onClickMoreOptions(Song song) {
+                        GlobalFuntion.handleClickMoreOptions(getActivity(), song);
+                    }
+
+                    @Override
+                    public void onClickFavoriteSong(Song song, boolean favorite) {
+                        GlobalFuntion.onClickFavoriteSong(getActivity(), song, favorite);
+                    }
+                });
+        mFragmentHomeBinding.rcvPopularSongs.setAdapter(mSongPopularAdapter);
+    }*/
 
     private List<Song> getListPopularSongs() {
         List<Song> list = new ArrayList<>();
@@ -359,6 +360,6 @@ public class FragmentDiscover extends Fragment {
         MusicService.mListSongPlaying.add(song);
         MusicService.isPlaying = false;
         GlobalFuntion.startMusicService(getActivity(), Constant.PLAY, 0);
-        GlobalFuntion.startActivity(getActivity(), PlayMusicActivity.class);
+        GlobalFuntion.startActivity(getActivity(), FullPlayerActivity.class);
     }
 }
