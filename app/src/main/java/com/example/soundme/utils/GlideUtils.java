@@ -8,7 +8,7 @@ import com.example.soundme.R;
 public class GlideUtils {
 
     public static void loadUrlBanner(String url, ImageView imageView) {
-        if (com.pro.music.utils.StringUtil.isEmpty(url)) {
+        if (StringUtil.isEmpty(url)) {
             imageView.setImageResource(R.drawable.img_no_image);
             return;
         }
@@ -20,7 +20,7 @@ public class GlideUtils {
     }
 
     public static void loadUrl(String url, ImageView imageView) {
-        if (com.pro.music.utils.StringUtil.isEmpty(url)) {
+        if (StringUtil.isEmpty(url)) {
             imageView.setImageResource(R.drawable.image_no_available);
             return;
         }

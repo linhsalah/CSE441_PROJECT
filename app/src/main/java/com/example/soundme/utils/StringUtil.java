@@ -1,4 +1,4 @@
-package com.pro.music.utils;
+package com.example.soundme.utils;
 
 public class StringUtil {
 

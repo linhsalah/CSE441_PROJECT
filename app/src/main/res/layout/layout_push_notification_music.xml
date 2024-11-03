@@ -38,7 +38,7 @@
             android:layout_width="@dimen/define_dimen_24"
             android:layout_height="@dimen/define_dimen_24"
             android:backgroundTint="@color/colorPrimaryDark"
-            android:src="@drawable/ic_previous_gray"
+            android:src="@drawable/ic_skip_previous"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -47,7 +47,7 @@
             android:layout_height="@dimen/define_dimen_30"
             android:layout_marginStart="@dimen/define_dimen_10"
             android:layout_marginEnd="@dimen/define_dimen_10"
-            android:src="@drawable/ic_play_gray"
+            android:src="@drawable/ic_play"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -55,14 +55,14 @@
             android:layout_width="@dimen/define_dimen_24"
             android:layout_height="@dimen/define_dimen_24"
             android:layout_marginEnd="@dimen/define_dimen_14"
-            android:src="@drawable/ic_next_gray"
+            android:src="@drawable/ic_skip_next"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/img_close"
             android:layout_width="@dimen/define_dimen_24"
             android:layout_height="@dimen/define_dimen_24"
-            android:src="@drawable/ic_close_gray"
+            android:src="@drawable/ic_close"
             tools:ignore="ContentDescription" />
     </LinearLayout>
 </RelativeLayout>
