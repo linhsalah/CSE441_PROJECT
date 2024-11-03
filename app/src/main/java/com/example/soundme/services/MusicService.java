@@ -28,7 +28,7 @@ import com.example.soundme.activities.MainActivity;
 import com.example.soundme.constant.Constant;
 import com.example.soundme.constant.GlobalFuntion;
 import com.example.soundme.models.Song;
-import com.pro.music.utils.StringUtil;
+import com.example.soundme.utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;

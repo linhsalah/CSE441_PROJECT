@@ -16,14 +16,16 @@ import android.view.ViewGroup;
 
 import com.example.soundme.MyApplication;
 import com.example.soundme.R;
+//import com.example.soundme.activities.FullPlayerActivity;
 import com.example.soundme.activities.FullPlayerActivity;
 import com.example.soundme.adapters.ArtistHorizontalAdapter;
 import com.example.soundme.adapters.BannerSongAdapter;
 import com.example.soundme.adapters.CategoryAdapter;
+import com.example.soundme.adapters.SongPopularAdapter;
 import com.example.soundme.constant.Constant;
 import com.example.soundme.constant.GlobalFuntion;
 import com.example.soundme.databinding.FragmentDiscoverBinding;
-import com.example.soundme.listener.IOnClickSongItemListener;
+import com.example.soundme.listeners.IOnClickSongItemListener;
 import com.example.soundme.models.Artist;
 import com.example.soundme.models.Category;
 import com.example.soundme.models.Song;
@@ -44,7 +46,7 @@ public class FragmentDiscover extends Fragment {
     private List<Artist> mListArtist;
     private List<Song> mListSong;
     private List<Song> mListSongBanner;
-//    private SongPopularAdapter mSongPopularAdapter;
+    private SongPopularAdapter mSongPopularAdapter;
 
     private final Handler mHandlerBanner = new Handler();
     private final Runnable mRunnableBanner = new Runnable() {
@@ -212,10 +214,12 @@ public class FragmentDiscover extends Fragment {
 
             @Override
             public void onClickFavoriteSong(Song song, boolean favorite) {
+
             }
 
             @Override
             public void onClickMoreOptions(Song song) {
+
             }
         });
         mFragmentHomeBinding.viewpager2.setAdapter(bannerSongAdapter);

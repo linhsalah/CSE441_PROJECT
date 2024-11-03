@@ -1,78 +1,36 @@
 package com.example.soundme;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.soundme.activities.MainActivity;
+import com.example.soundme.activities.SignInActivity;
+import com.example.soundme.constant.GlobalFuntion;
+import com.example.soundme.databinding.ActivitySplashScreenBinding;
+import com.example.soundme.prefs.DataStoreManager;
+import com.example.soundme.utils.StringUtil;
 
 public class SplashScreenActivity extends AppCompatActivity {
-    private String LOG_TAG = "SplashScreenActivity";
-    private static final int SHOWING_INTERVAL = 2000;
+    private ActivitySplashScreenBinding mActivitySplashBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_splash_screen);
-        openMainActivity();
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        mActivitySplashBinding = ActivitySplashScreenBinding.inflate(getLayoutInflater());
+        setContentView(mActivitySplashBinding.getRoot());
+        Handler handler = new Handler();
+        handler.postDelayed(this::goToActivity, 2000);
     }
 
-    private void openMainActivity() {
-        Log.d(LOG_TAG, "openMainActivity");
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.d(LOG_TAG, "run");
-                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, SHOWING_INTERVAL);
-    }
-
-    public static class SplashScreenActivity extends AppCompatActivity {
-        private String LOG_TAG = "SplashScreenActivity";
-        private static final int SHOWING_INTERVAL = 2000;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            EdgeToEdge.enable(this);
-            setContentView(R.layout.activity_splash_screen);
-            openMainActivity();
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-                return insets;
-            });
+    private void goToActivity() {
+        if (DataStoreManager.getUser() != null
+                && !StringUtil.isEmpty(DataStoreManager.getUser().getEmail())) {
+            GlobalFuntion.startActivity(this, MainActivity.class);
+        } else {
+            GlobalFuntion.startActivity(this, SignInActivity.class);
         }
-
-        private void openMainActivity() {
-            Log.d(LOG_TAG, "openMainActivity");
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Log.d(LOG_TAG, "run");
-                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }, SHOWING_INTERVAL);
-        }
+        finish();
     }
 }

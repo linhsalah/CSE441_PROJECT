@@ -38,16 +38,11 @@
         <receiver
             android:name="com.example.soundme.service.MusicReceiver"
             android:exported="false" />
-
-        <activity
-            android:name=".activities.PlaylistActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.InSearchActivity"
-            android:exported="false" />
         <activity
             android:name=".activities.FullPlayerActivity"
             android:exported="false" />
+        <activity android:name=".activities.SignInActivity"
+            android:exported="false"/>
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">

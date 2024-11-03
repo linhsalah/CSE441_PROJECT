@@ -1,4 +1,4 @@
-package com.pro.music.model;
+package com.example.soundme.models;
 
 import com.google.gson.Gson;
 

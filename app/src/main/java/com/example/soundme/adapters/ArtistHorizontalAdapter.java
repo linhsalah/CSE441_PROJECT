@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.soundme.databinding.ItemArtistHorizontalBinding;
-import com.example.soundme.listener.IOnClickArtistItemListener;
+import com.example.soundme.listeners.IOnClickArtistItemListener;
 import com.example.soundme.models.Artist;
 import com.example.soundme.utils.GlideUtils;
 

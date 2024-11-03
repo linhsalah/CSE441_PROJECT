@@ -14,7 +14,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.soundme.R;
-import com.example.soundme.activities.FullPlayerActivity;
 
 public class FragmentMiniPlayer extends Fragment {
     private static final String LOG_TAG = "MiniPlayerFragment";
@@ -81,8 +80,8 @@ public class FragmentMiniPlayer extends Fragment {
         miniPlayer_background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), FullPlayerActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), FullPlayerActivity.class);
+//                startActivity(intent);
             }
         });
     }

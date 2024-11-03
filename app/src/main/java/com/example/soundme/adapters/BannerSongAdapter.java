@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.soundme.databinding.ItemBannerSongBinding;
-import com.example.soundme.listener.IOnClickSongItemListener;
+import com.example.soundme.listeners.IOnClickSongItemListener;
 import com.example.soundme.models.Song;
 import com.example.soundme.utils.GlideUtils;
 
