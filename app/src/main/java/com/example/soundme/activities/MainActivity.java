@@ -48,24 +48,6 @@ public class MainActivity extends AppCompatActivity {
         checkNotificationPermission();
         addControl();
 
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.fragment_discover:
-//                        viewPager.setCurrentItem(0);
-//                        break;
-//                    case R.id.fragment_search:
-//                        viewPager.setCurrentItem(1);
-//                        break;
-//                    case R.id.fragment_library:
-//                        viewPager.setCurrentItem(2);
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -98,17 +80,6 @@ public class MainActivity extends AppCompatActivity {
     private void addControl() {
         viewPager = findViewById(R.id.viewpager);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        addMiniPlayer();
-    }
-
-    private void addMiniPlayer() {
-        FragmentMiniPlayer fragmentMiniPlayer = new FragmentMiniPlayer();
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.miniPlayer_frame, fragmentMiniPlayer);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 
     private void setupViewPager(ViewPager viewPager) {

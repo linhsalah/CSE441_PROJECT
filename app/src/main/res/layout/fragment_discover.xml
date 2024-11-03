@@ -11,14 +11,14 @@
         android:id="@+id/top_frame"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimenTopBackgroundHeight"
-        android:background="@color/colorDark2"
+        android:background="@color/colorDark1"
         android:orientation="vertical"
         android:gravity="center">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_logo_and_text" />
+            android:src="@drawable/logo" />
 
     </LinearLayout>
 
@@ -76,29 +76,6 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_normal"
                         android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:id="@+id/layout_view_all_category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="@dimen/define_dimen_5"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true"
-                        android:orientation="vertical"
-                        tools:ignore="RelativeOverlap">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/view_all"
-                            android:textColor="@color/white"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/white"/>
-                    </LinearLayout>
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -127,84 +104,10 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_normal"
                         android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:id="@+id/layout_view_all_artist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="@dimen/define_dimen_5"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true"
-                        android:orientation="vertical"
-                        tools:ignore="RelativeOverlap">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/view_all"
-                            android:textColor="@color/white"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/white"/>
-                    </LinearLayout>
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_artist"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/define_dimen_10"
-                    android:layout_marginBottom="@dimen/define_dimen_10"
-                    android:focusable="false"
-                    android:nestedScrollingEnabled="false" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/define_dimen_10"
-                    android:layout_marginEnd="@dimen/define_dimen_10"
-                    android:layout_marginBottom="@dimen/define_dimen_5"
-                    android:layout_marginTop="@dimen/define_dimen_12">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="@string/menu_popular_songs"
-                        style="@style/ListHeader"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_normal"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:id="@+id/layout_view_all_popular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="@dimen/define_dimen_5"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true"
-                        android:orientation="vertical"
-                        tools:ignore="RelativeOverlap">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/view_all"
-                            android:textColor="@color/white"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/white"/>
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_popular_songs"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/define_dimen_10"

@@ -18,7 +18,7 @@ public class Song implements Serializable {
     private boolean isPlaying;
     private boolean isPriority;
 
-//    private HashMap<String, UserInfor> favorite;
+    private HashMap<String, UserInfor> favorite;
 
     public Song() {
     }
@@ -119,11 +119,11 @@ public class Song implements Serializable {
         isPriority = priority;
     }
 
-//    public HashMap<String, UserInfor> getFavorite() {
-//        return favorite;
-//    }
+    public HashMap<String, UserInfor> getFavorite() {
+        return favorite;
+    }
 
-//    public void setFavorite(HashMap<String, UserInfor> favorite) {
-//        this.favorite = favorite;
-//    }
+    public void setFavorite(HashMap<String, UserInfor> favorite) {
+        this.favorite = favorite;
+    }
 }

@@ -16,11 +16,9 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     private final List<Category> mListCategory;
-    public final IOnClickCategoryItemListener iOnClickCategoryItemListener;
 
-    public CategoryAdapter(List<Category> list, IOnClickCategoryItemListener listener) {
+    public CategoryAdapter(List<Category> list) {
         this.mListCategory = list;
-        this.iOnClickCategoryItemListener = listener;
     }
 
     @NonNull
@@ -38,8 +36,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         }
         GlideUtils.loadUrl(category.getImage(), holder.mItemCategoryBinding.imgCategory);
         holder.mItemCategoryBinding.tvCategory.setText(category.getName());
-
-        holder.mItemCategoryBinding.layoutItem.setOnClickListener(v -> iOnClickCategoryItemListener.onClickItemCategory(category));
     }
 
     @Override

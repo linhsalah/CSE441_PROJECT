@@ -16,11 +16,9 @@ import java.util.List;
 public class ArtistHorizontalAdapter extends RecyclerView.Adapter<ArtistHorizontalAdapter.ArtistHorizontalViewHolder> {
 
     private final List<Artist> mListArtist;
-    public final IOnClickArtistItemListener iOnClickArtistItemListener;
 
-    public ArtistHorizontalAdapter(List<Artist> list, IOnClickArtistItemListener listener) {
+    public ArtistHorizontalAdapter(List<Artist> list) {
         this.mListArtist = list;
-        this.iOnClickArtistItemListener = listener;
     }
 
     @NonNull
@@ -36,8 +34,6 @@ public class ArtistHorizontalAdapter extends RecyclerView.Adapter<ArtistHorizont
         if (artist == null) return;
         GlideUtils.loadUrl(artist.getImage(), holder.mItemArtistHorizontalBinding.imgArtist);
         holder.mItemArtistHorizontalBinding.tvArtist.setText(artist.getName());
-
-        holder.mItemArtistHorizontalBinding.layoutItem.setOnClickListener(v -> iOnClickArtistItemListener.onClickItemArtist(artist));
     }
 
     @Override

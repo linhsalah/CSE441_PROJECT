@@ -16,10 +16,16 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.example.soundme.MyApplication;
+import com.example.soundme.models.Song;
+import com.example.soundme.models.UserInfor;
+import com.example.soundme.prefs.DataStoreManager;
 import com.example.soundme.service.MusicReceiver;
 import com.example.soundme.service.MusicService;
 
 import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 //import androidx.core.app.ActivityCompat;
@@ -157,54 +163,54 @@ public class GlobalFuntion {
         int pendingFlag = PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT;
         return PendingIntent.getBroadcast(ctx.getApplicationContext(), action, intent, pendingFlag);
     }
-//
-//    public static boolean isFavoriteSong(Song song) {
-//        if (song.getFavorite() == null || song.getFavorite().isEmpty()) return false;
-//        List<UserInfor> listUsersFavorite = new ArrayList<>(song.getFavorite().values());
-//        if (listUsersFavorite.isEmpty()) return false;
-//        for (UserInfor userInfor : listUsersFavorite) {
-//            if (DataStoreManager.getUser().getEmail().equals(userInfor.getEmailUser())) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public static UserInfor getUserFavoriteSong(Song song) {
-//        UserInfor userInfor = null;
-//        if (song.getFavorite() == null || song.getFavorite().isEmpty()) return null;
-//        List<UserInfor> listUsersFavorite = new ArrayList<>(song.getFavorite().values());
-//        if (listUsersFavorite.isEmpty()) return null;
-//        for (UserInfor userObject : listUsersFavorite) {
-//            if (DataStoreManager.getUser().getEmail().equals(userObject.getEmailUser())) {
-//                userInfor = userObject;
-//                break;
-//            }
-//        }
-//        return userInfor;
-//    }
-//
-//    public static void onClickFavoriteSong(Context context, Song song, boolean isFavorite) {
-//        if (context == null) return;
-//        if (isFavorite) {
-//            String userEmail = DataStoreManager.getUser().getEmail();
-//            UserInfor userInfor = new UserInfor(System.currentTimeMillis(), userEmail);
-//            MyApplication.get(context).getSongsDatabaseReference()
-//                    .child(String.valueOf(song.getId()))
-//                    .child("favorite")
-//                    .child(String.valueOf(userInfor.getId()))
-//                    .setValue(userInfor);
-//        } else {
-//            UserInfor userInfor = getUserFavoriteSong(song);
-//            if (userInfor != null) {
-//                MyApplication.get(context).getSongsDatabaseReference()
-//                        .child(String.valueOf(song.getId()))
-//                        .child("favorite")
-//                        .child(String.valueOf(userInfor.getId()))
-//                        .removeValue();
-//            }
-//        }
-//    }
+
+    public static boolean isFavoriteSong(Song song) {
+        if (song.getFavorite() == null || song.getFavorite().isEmpty()) return false;
+        List<UserInfor> listUsersFavorite = new ArrayList<>(song.getFavorite().values());
+        if (listUsersFavorite.isEmpty()) return false;
+        for (UserInfor userInfor : listUsersFavorite) {
+            if (DataStoreManager.getUser().getEmail().equals(userInfor.getEmailUser())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static UserInfor getUserFavoriteSong(Song song) {
+        UserInfor userInfor = null;
+        if (song.getFavorite() == null || song.getFavorite().isEmpty()) return null;
+        List<UserInfor> listUsersFavorite = new ArrayList<>(song.getFavorite().values());
+        if (listUsersFavorite.isEmpty()) return null;
+        for (UserInfor userObject : listUsersFavorite) {
+            if (DataStoreManager.getUser().getEmail().equals(userObject.getEmailUser())) {
+                userInfor = userObject;
+                break;
+            }
+        }
+        return userInfor;
+    }
+
+    public static void onClickFavoriteSong(Context context, Song song, boolean isFavorite) {
+        if (context == null) return;
+        if (isFavorite) {
+            String userEmail = DataStoreManager.getUser().getEmail();
+            UserInfor userInfor = new UserInfor(System.currentTimeMillis(), userEmail);
+            MyApplication.get(context).getSongsDatabaseReference()
+                    .child(String.valueOf(song.getId()))
+                    .child("favorite")
+                    .child(String.valueOf(userInfor.getId()))
+                    .setValue(userInfor);
+        } else {
+            UserInfor userInfor = getUserFavoriteSong(song);
+            if (userInfor != null) {
+                MyApplication.get(context).getSongsDatabaseReference()
+                        .child(String.valueOf(song.getId()))
+                        .child("favorite")
+                        .child(String.valueOf(userInfor.getId()))
+                        .removeValue();
+            }
+        }
+    }
 //
 //    @SuppressLint("InflateParams")
 //    public static void handleClickMoreOptions(Activity context, Song song) {

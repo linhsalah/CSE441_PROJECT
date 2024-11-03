@@ -33,7 +33,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class FragmentDiscover extends Fragment {
@@ -44,7 +43,6 @@ public class FragmentDiscover extends Fragment {
     private List<Artist> mListArtist;
     private List<Song> mListSong;
     private List<Song> mListSongBanner;
-//    private SongPopularAdapter mSongPopularAdapter;
 
     private final Handler mHandlerBanner = new Handler();
     private final Runnable mRunnableBanner = new Runnable() {
@@ -69,42 +67,9 @@ public class FragmentDiscover extends Fragment {
         getListCategoryFromFirebase();
         getListArtistFromFirebase();
         getListSongFromFirebase();
-//        initListener();
 
         return mFragmentHomeBinding.getRoot();
     }
-
-//    private void initListener() {
-//        mFragmentHomeBinding.layoutSearch.setOnClickListener(view -> searchSong());
-//
-//        mFragmentHomeBinding.layoutViewAllCategory.setOnClickListener(v -> {
-//            MainActivity mainActivity = (MainActivity) getActivity();
-//            if (mainActivity != null) {
-//                mainActivity.clickSeeAllCategory();
-//            }
-//        });
-//
-//        mFragmentHomeBinding.layoutViewAllArtist.setOnClickListener(v -> {
-//            MainActivity mainActivity = (MainActivity) getActivity();
-//            if (mainActivity != null) {
-//                mainActivity.clickSeeAllArtist();
-//            }
-//        });
-//
-//        mFragmentHomeBinding.layoutViewAllPopular.setOnClickListener(v -> {
-//            MainActivity mainActivity = (MainActivity) getActivity();
-//            if (mainActivity != null) {
-//                mainActivity.clickSeeAllPopularSongs();
-//            }
-//        });
-//
-//        mFragmentHomeBinding.layoutViewAllFavoriteSongs.setOnClickListener(v -> {
-//            MainActivity mainActivity = (MainActivity) getActivity();
-//            if (mainActivity != null) {
-//                mainActivity.clickSeeAllFavoriteSongs();
-//            }
-//        });
-//    }
 
     private void getListCategoryFromFirebase() {
         if (getActivity() == null) return;
@@ -163,8 +128,6 @@ public class FragmentDiscover extends Fragment {
                             mListSong.add(0, song);
                         }
                         displayListBannerSongs();
-//                        displayListPopularSongs();
-//                        displayListFavoriteSongs();
                     }
 
                     @Override
@@ -180,12 +143,7 @@ public class FragmentDiscover extends Fragment {
         mFragmentHomeBinding.rcvCategory.setLayoutManager(ListCategory);
 
 
-        CategoryAdapter categoryAdapter = new CategoryAdapter(getListCategory(), category -> {
-//            MainActivity mainActivity = (MainActivity) getActivity();
-//            if (mainActivity != null) {
-//                mainActivity.clickOpenSongsByCategory(category);
-//            }
-        });
+        CategoryAdapter categoryAdapter = new CategoryAdapter(getListCategory());
         mFragmentHomeBinding.rcvCategory.setAdapter(categoryAdapter);
     }
 
@@ -194,12 +152,7 @@ public class FragmentDiscover extends Fragment {
                 LinearLayoutManager.HORIZONTAL, false);
         mFragmentHomeBinding.rcvArtist.setLayoutManager(linearLayoutManager);
 
-        ArtistHorizontalAdapter artistHorizontalAdapter = new ArtistHorizontalAdapter(getListArtist(), artist -> {
-//            MainActivity mainActivity = (MainActivity) getActivity();
-//            if (mainActivity != null) {
-//                mainActivity.clickOpenSongsByArtist(artist);
-//            }
-        });
+        ArtistHorizontalAdapter artistHorizontalAdapter = new ArtistHorizontalAdapter(getListArtist());
         mFragmentHomeBinding.rcvArtist.setAdapter(artistHorizontalAdapter);
     }
 
@@ -212,10 +165,12 @@ public class FragmentDiscover extends Fragment {
 
             @Override
             public void onClickFavoriteSong(Song song, boolean favorite) {
+
             }
 
             @Override
             public void onClickMoreOptions(Song song) {
+
             }
         });
         mFragmentHomeBinding.viewpager2.setAdapter(bannerSongAdapter);
@@ -248,76 +203,6 @@ public class FragmentDiscover extends Fragment {
         return mListSongBanner;
     }
 
-//    private void displayListPopularSongs() {
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-//        mFragmentHomeBinding.rcvPopularSongs.setLayoutManager(linearLayoutManager);
-//
-//        mSongPopularAdapter = new SongPopularAdapter(getActivity(), getListPopularSongs(),
-//                new IOnClickSongItemListener() {
-//                    @Override
-//                    public void onClickItemSong(Song song) {
-//                        goToSongDetail(song);
-//                    }
-//
-//                    @Override
-//                    public void onClickMoreOptions(Song song) {
-//                        GlobalFuntion.handleClickMoreOptions(getActivity(), song);
-//                    }
-//
-//                    @Override
-//                    public void onClickFavoriteSong(Song song, boolean favorite) {
-//                        GlobalFuntion.onClickFavoriteSong(getActivity(), song, favorite);
-//                    }
-//                });
-//        mFragmentHomeBinding.rcvPopularSongs.setAdapter(mSongPopularAdapter);
-//    }
-
-    private List<Song> getListPopularSongs() {
-        List<Song> list = new ArrayList<>();
-        if (mListSong == null || mListSong.isEmpty()) {
-            return list;
-        }
-        List<Song> allSongs = new ArrayList<>(mListSong);
-        Collections.sort(allSongs, (song1, song2) -> song2.getCount() - song1.getCount());
-        for (Song song : allSongs) {
-            if (list.size() < Constant.MAX_COUNT_POPULAR) {
-                list.add(song);
-            }
-        }
-        return list;
-    }
-
-//    private void displayListFavoriteSongs() {
-//        if (getActivity() == null) return;
-//        List<Song> list = getListFavoriteSongs();
-//        if (list.isEmpty()) {
-//            mFragmentHomeBinding.layoutFavorite.setVisibility(View.GONE);
-//        } else {
-//            mFragmentHomeBinding.layoutFavorite.setVisibility(View.VISIBLE);
-//
-//            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-//            mFragmentHomeBinding.rcvFavoriteSongs.setLayoutManager(linearLayoutManager);
-//
-//            SongAdapter songAdapter = new SongAdapter(getListFavoriteSongs(), new IOnClickSongItemListener() {
-//                @Override
-//                public void onClickItemSong(Song song) {
-//                    goToSongDetail(song);
-//                }
-//
-//                @Override
-//                public void onClickFavoriteSong(Song song, boolean favorite) {
-////                    GlobalFuntion.onClickFavoriteSong(getActivity(), song, favorite);
-//                }
-//
-//                @Override
-//                public void onClickMoreOptions(Song song) {
-////                    GlobalFuntion.handleClickMoreOptions(getActivity(), song);
-//                }
-//            });
-//            mFragmentHomeBinding.rcvFavoriteSongs.setAdapter(songAdapter);
-//        }
-//    }
-
     private List<Category> getListCategory() {
         List<Category> list = new ArrayList<>();
         if (mListCategory == null || mListCategory.isEmpty()) return list;
@@ -340,23 +225,9 @@ public class FragmentDiscover extends Fragment {
         return list;
     }
 
-    private List<Song> getListFavoriteSongs() {
-        List<Song> list = new ArrayList<>();
-        if (mListSong == null || mListSong.isEmpty()) {
-            return list;
-        }
-        for (Song song : mListSong) {
-//            if (GlobalFuntion.isFavoriteSong(song) && list.size() < Constant.MAX_COUNT_FAVORITE) {
-            {
-                list.add(song);
-            }
-        }
-        return list;
-    }
-
     private void goToSongDetail(@NonNull Song song) {
         MusicService.clearListSongPlaying();
-        MusicService.mListSongPlaying.add(song);
+        MusicService.mListSongPlaying.addAll(mListSong);
         MusicService.isPlaying = false;
         GlobalFuntion.startMusicService(getActivity(), Constant.PLAY, 0);
         GlobalFuntion.startActivity(getActivity(), FullPlayerActivity.class);
