@@ -4,6 +4,10 @@ import android.content.Context;
 
 import androidx.annotation.Nullable;
 
+import com.example.soundme.models.User;
+import com.example.soundme.utils.StringUtil;
+import com.google.gson.Gson;
+
 //import com.google.gson.Gson;
 //import com.example.soundme.model.User;
 //import com.example.soundme.utils.StringUtil;
@@ -28,19 +32,19 @@ public class DataStoreManager {
         }
     }
 
-//    public static void setUser(@Nullable User user) {
-//        String jsonUser = "";
-//        if (user != null) {
-//            jsonUser = user.toJSon();
-//        }
-//        DataStoreManager.getInstance().sharedPreferences.putStringValue(PREF_USER_INFOR, jsonUser);
-//    }
-//
-//    public static User getUser() {
-//        String jsonUser = DataStoreManager.getInstance().sharedPreferences.getStringValue(PREF_USER_INFOR);
-//        if (!StringUtil.isEmpty(jsonUser)) {
-//            return new Gson().fromJson(jsonUser, User.class);
-//        }
-//        return new User();
-//    }
+    public static void setUser(@Nullable User user) {
+        String jsonUser = "";
+        if (user != null) {
+            jsonUser = user.toJSon();
+        }
+        DataStoreManager.getInstance().sharedPreferences.putStringValue(PREF_USER_INFOR, jsonUser);
+    }
+
+    public static User getUser() {
+        String jsonUser = DataStoreManager.getInstance().sharedPreferences.getStringValue(PREF_USER_INFOR);
+        if (!StringUtil.isEmpty(jsonUser)) {
+            return new Gson().fromJson(jsonUser, User.class);
+        }
+        return new User();
+    }
 }

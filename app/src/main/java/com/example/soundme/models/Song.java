@@ -12,6 +12,7 @@ public class Song implements Serializable {
     private int artistId;
     private String artist;
     private int categoryId;
+    private String category;
     private boolean latest;
     private boolean featured;
     private int count;
@@ -69,6 +70,10 @@ public class Song implements Serializable {
 
     public void setArtist(String artist) {
         this.artist = artist;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public int getCategoryId() {

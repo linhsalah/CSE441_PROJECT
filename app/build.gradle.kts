@@ -49,6 +49,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.github.bumptech.glide:glide:4.15.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("com.google.firebase:firebase-auth:22.1.1") // phiên bản mới nhất
 
 
     testImplementation(libs.junit)

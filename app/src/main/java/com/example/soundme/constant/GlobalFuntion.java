@@ -19,6 +19,9 @@ import android.widget.Toast;
 import com.example.soundme.service.MusicReceiver;
 import com.example.soundme.service.MusicService;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 //import androidx.core.app.ActivityCompat;
 //
 //import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -48,16 +51,16 @@ public class GlobalFuntion {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
-//
-//    public static void hideSoftKeyboard(Activity activity) {
-//        try {
-//            InputMethodManager inputMethodManager = (InputMethodManager) activity.
-//                    getSystemService(Activity.INPUT_METHOD_SERVICE);
-//            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-//        } catch (NullPointerException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        try {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.
+                    getSystemService(Activity.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
+    }
 //
 //    public static void onClickOpenGmail(Context context) {
 //        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
@@ -134,12 +137,12 @@ public class GlobalFuntion {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-//    public static String getTextSearch(String input) {
-//        String nfdNormalizedString = Normalizer.normalize(input, Normalizer.Form.NFD);
-//        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-//        return pattern.matcher(nfdNormalizedString).replaceAll("");
-//    }
-//
+    public static String getTextSearch(String input) {
+        String nfdNormalizedString = Normalizer.normalize(input, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(nfdNormalizedString).replaceAll("");
+    }
+
     public static void startMusicService(Context ctx, int action, int songPosition) {
         Intent musicService = new Intent(ctx, MusicService.class);
         musicService.putExtra(Constant.MUSIC_ACTION, action);

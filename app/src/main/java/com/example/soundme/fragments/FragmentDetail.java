@@ -1,65 +1,92 @@
 package com.example.soundme.fragments;
 
+import static com.example.soundme.service.MusicService.deleteSongFromPlaylist;
+
+import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.soundme.R;
+import com.example.soundme.adapters.SongPlayingAdapter;
+import com.example.soundme.constant.Constant;
+import com.example.soundme.constant.GlobalFuntion;
+import com.example.soundme.databinding.FragmentDetailBinding;
+import com.example.soundme.listener.IOnClickSongPlayingItemListener;
+import com.example.soundme.service.MusicService;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentDetail#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentDetail extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FragmentDetail() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentDetail.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentDetail newInstance(String param1, String param2) {
-        FragmentDetail fragment = new FragmentDetail();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    private FragmentDetailBinding mFragmentDetailBinding;
+    private SongPlayingAdapter mSongPlayingAdapter;
+    private final BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            updateStatusListSongPlaying();
         }
-    }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false);
+        mFragmentDetailBinding = FragmentDetailBinding.inflate(inflater, container, false);
+
+        if (getActivity() != null) {
+            LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mBroadcastReceiver,
+                    new IntentFilter(Constant.CHANGE_LISTENER));
+        }
+        displayListSongPlaying();
+
+        return mFragmentDetailBinding.getRoot();
     }
+
+    private void displayListSongPlaying() {
+        if (getActivity() == null || MusicService.mListSongPlaying == null) {
+            return;
+        }
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        mFragmentDetailBinding.rcvData.setLayoutManager(linearLayoutManager);
+
+        mSongPlayingAdapter = new SongPlayingAdapter(MusicService.mListSongPlaying,
+                new IOnClickSongPlayingItemListener() {
+                    @Override
+                    public void onClickItemSongPlaying(int position) {
+                        clickItemSongPlaying(position);
+                    }
+
+                    @Override
+                    public void onClickRemoveFromPlaylist(int position) {
+                        deleteSongFromPlaylist(position);
+                    }
+                });
+        mFragmentDetailBinding.rcvData.setAdapter(mSongPlayingAdapter);
+
+        updateStatusListSongPlaying();
+    }
+
+    private void clickItemSongPlaying(int position) {
+        MusicService.isPlaying = false;
+        GlobalFuntion.startMusicService(getActivity(), Constant.PLAY, position);
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void updateStatusListSongPlaying() {
+        if (getActivity() == null || MusicService.mListSongPlaying == null || MusicService.mListSongPlaying.isEmpty()) {
+            return;
+        }
+        for (int i = 0; i < MusicService.mListSongPlaying.size(); i++) {
+            MusicService.mListSongPlaying.get(i).setPlaying(i == MusicService.mSongPosition);
+        }
+        mSongPlayingAdapter.notifyDataSetChanged();
+    }
+
+
 }
