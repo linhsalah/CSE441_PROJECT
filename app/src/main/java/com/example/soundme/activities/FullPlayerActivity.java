@@ -1,11 +1,18 @@
 package com.example.soundme.activities;
 
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.soundme.adapters.MusicViewPagerAdapter;
+import com.example.soundme.adapters.ViewPagerAdapter;
 import com.example.soundme.databinding.ActivityFullPlayerBinding;
+import com.example.soundme.fragments.FragmentDetail;
+import com.example.soundme.fragments.FragmentFullPlayer;
+import com.example.soundme.fragments.FragmentLyric;
 
 
 public class FullPlayerActivity extends AppCompatActivity {

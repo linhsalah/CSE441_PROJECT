@@ -121,7 +121,7 @@ public class Song implements Serializable {
 //    public HashMap<String, UserInfor> getFavorite() {
 //        return favorite;
 //    }
-
+//
 //    public void setFavorite(HashMap<String, UserInfor> favorite) {
 //        this.favorite = favorite;
 //    }

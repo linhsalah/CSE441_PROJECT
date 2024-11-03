@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 
 import com.example.soundme.prefs.DataStoreManager;
 import com.google.firebase.FirebaseApp;
@@ -13,7 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MyApplication extends Application {
 
-    // Firebase url
     public static final String FIREBASE_URL = "https://soundme-6da35-default-rtdb.firebaseio.com/";
     public static final String CHANNEL_ID = "channel_music_basic_id";
     private static final String CHANNEL_NAME = "channel_music_basic_name";
@@ -27,6 +27,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         FirebaseApp.initializeApp(this);
+        createChannelNotification();
+        DataStoreManager.init(getApplicationContext());
         mFirebaseDatabase = FirebaseDatabase.getInstance(FIREBASE_URL);
         createChannelNotification();
         DataStoreManager.init(getApplicationContext());

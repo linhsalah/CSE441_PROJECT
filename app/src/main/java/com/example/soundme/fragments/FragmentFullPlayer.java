@@ -72,7 +72,7 @@ public class FragmentFullPlayer extends Fragment implements View.OnClickListener
         mFragmentPlaySongBinding.imgPrevious.setOnClickListener(this);
         mFragmentPlaySongBinding.imgPlay.setOnClickListener(this);
         mFragmentPlaySongBinding.imgNext.setOnClickListener(this);
-        mFragmentPlaySongBinding.imgDownload.setOnClickListener(this);
+
 
         mFragmentPlaySongBinding.seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -208,8 +208,6 @@ public class FragmentFullPlayer extends Fragment implements View.OnClickListener
             clickOnShuffleButton();
         } else if (id ==R.id.img_repeat) {
             clickOnRepeatButton();
-        } else if (id ==R.id.img_download) {
-//            clickOnDownloadSong();
         }
     }
 

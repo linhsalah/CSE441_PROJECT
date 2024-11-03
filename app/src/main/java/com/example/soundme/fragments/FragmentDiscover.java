@@ -357,7 +357,7 @@ public class FragmentDiscover extends Fragment {
 
     private void goToSongDetail(@NonNull Song song) {
         MusicService.clearListSongPlaying();
-        MusicService.mListSongPlaying.add(song);
+        MusicService.mListSongPlaying.addAll(mListSong);
         MusicService.isPlaying = false;
         GlobalFuntion.startMusicService(getActivity(), Constant.PLAY, 0);
         GlobalFuntion.startActivity(getActivity(), FullPlayerActivity.class);

@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.soundme.R;
 import com.example.soundme.constant.GlobalFuntion;
 import com.example.soundme.databinding.ActivitySignInBinding;
+import com.example.soundme.models.User;
+import com.example.soundme.prefs.DataStoreManager;
 import com.example.soundme.utils.StringUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,8 +61,8 @@ public class SignInActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                         if (user != null) {
-//                            User userObject = new User(user.getEmail(), password);
-//                            DataStoreManager.setUser(userObject);
+                            User userObject = new User(user.getEmail(), password);
+                            DataStoreManager.setUser(userObject);
                             GlobalFuntion.startActivity(SignInActivity.this, MainActivity.class);
                             finishAffinity();
                         }
