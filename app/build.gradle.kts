@@ -1,3 +1,5 @@
+import org.gradle.internal.impldep.bsh.commands.dir
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
@@ -30,7 +32,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
     buildFeatures {
         viewBinding = true
     }
@@ -43,15 +44,15 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.database)
-    implementation ("com.google.firebase:firebase-auth:23.1.0")
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
-
+    implementation(libs.shimmer)
+    implementation(libs.circleindicator)
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.github.bumptech.glide:glide:4.15.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
-    implementation("me.relex:circleindicator:2.1.6")
-    implementation("com.facebook.shimmer:shimmer:0.5.0")
+
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 
 }

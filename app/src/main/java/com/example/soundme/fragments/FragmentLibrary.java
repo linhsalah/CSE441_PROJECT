@@ -5,23 +5,23 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import com.example.soundme.R;
-import com.example.soundme.activities.InSearchActivity;
+import com.example.soundme.activities.PlaylistActivity;
 
-public class FragmentSearch extends Fragment {
-    private FrameLayout search_frame;
+public class FragmentLibrary extends Fragment {
+    private ConstraintLayout liked_songs_frame;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        return inflater.inflate(R.layout.fragment_library, container, false);
     }
 
     @Override
@@ -33,16 +33,17 @@ public class FragmentSearch extends Fragment {
     }
 
     private void addControl(View view) {
-        search_frame = view.findViewById(R.id.search_frame);
+        liked_songs_frame = view.findViewById(R.id.liked_songs_frame);
     }
 
     private void addEvent() {
-        search_frame.setOnClickListener(new View.OnClickListener() {
+        liked_songs_frame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), InSearchActivity.class);
+                Intent intent = new Intent(getActivity(), PlaylistActivity.class);
                 startActivity(intent);
             }
         });
     }
+
 }
